@@ -1,0 +1,58 @@
+🔹 static/index.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BHASHA-AI Voice</title>
+</head>
+<body>
+
+<h2>🎤 BHASHA-AI Voice Assistant</h2>
+<button id="start">Start Talking</button>
+<button id="stop">Stop</button>
+
+<p id="status"></p>
+
+<script>
+let mediaRecorder;
+let audioChunks = [];
+
+document.getElementById("start").onclick = async () => {
+  const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  mediaRecorder = new MediaRecorder(stream);
+  audioChunks = [];
+
+  mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+  mediaRecorder.start();
+  document.getElementById("status").innerText = "🎤 Listening...";
+};
+
+document.getElementById("stop").onclick = async () => {
+  mediaRecorder.stop();
+
+  mediaRecorder.onstop = async () => {
+    document.getElementById("status").innerText = "🧠 Thinking...";
+
+    const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
+    const formData = new FormData();
+    formData.append("audio", audioBlob, "input.wav");
+
+    const res = await fetch("http://localhost:5000/voice", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    const audio = new Audio(
+      "http://localhost:5000/audio/" + data.audio_file
+    );
+    audio.play();
+
+    document.getElementById("status").innerText = "🤖 AI Speaking...";
+  };
+};
+</script>
+
+</body>
+</html>
