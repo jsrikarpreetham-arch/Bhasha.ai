@@ -309,29 +309,3 @@ Prototype author: (Add your name)
 Repo: https://github.com/<your-username>/bhasha.ai
 
 ---
-
-## Everything to include before I generate the final polished repo README & deploy plan
-Please provide the following details so I can personalize the README, demo assets, deployment scripts, and pricing tier pages:
-
-1. GitHub username / repo name to publish (e.g., jsrikarpreetham-arch / bhasha.ai)  
-2. Full product name and short tagline (if different from above)  
-3. Preferred contact email and company/author name  
-4. Demo video link or screenshots (or say "I need help creating them")  
-5. Logo / brand colors / favicon (optional)  
-6. Preferred pricing tiers & limits (or accept suggested tiers above)  
-7. Integrations you want prioritized (Slack, Teams, Chrome extension, Gmail plugin, etc.)  
-8. Hosting preference for backend (Railway, Render, Cloud Run, AWS, other)  
-9. Do you want token-based auth (JWT) or OAuth? Will you accept hashed passwords + email verification?  
-10. Any legal/privacy requirements (GDPR, HIPAA, etc.) or enterprise contracts needed  
-11. Which HF models do you prefer or should I recommend (open models vs HF Inference endpoints)?  
-12. Any sample text or example use-cases to include in the demo (emails, chat snippets, meeting transcriptions)  
-13. Payment processor preference (Stripe recommended)  
-
-Once you reply with these, I will:
-- Produce a ready-to-paste polished README.md for the repository (personalized)
-- Generate requirements.txt and example .env.example
-- Create a simple Dockerfile and GitHub Actions workflow for CI/CD
-- Draft API docs (openapi/swagger minimal) and an integration design (Slack or Chrome extension per your pick)
-- Draft a suggested pricing page and copy for the website
-
-Thank you — tell me the items above you want to confirm or provide, and I’ll proceed.
